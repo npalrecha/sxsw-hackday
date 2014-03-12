@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>Sentance Sharer</title>
+
+<style>
+@font-face {
+  font-family:"neuzeit_groteskblack";
+  src:url("http://cdn.beatsmusic.com/css/fonts/neuzeitgro-bla-webfont.eot");
+  src:url("http://cdn.beatsmusic.com/css/fonts/neuzeitgro-bla-webfont.eot?#iefix")
+      format("embedded-opentype"),
+      url("http://cdn.beatsmusic.com/css/fonts/neuzeitgro-bla-webfont.woff")
+      format("woff"),
+      url("http://cdn.beatsmusic.com/css/fonts/neuzeitgro-bla-webfont.ttf")
+      format("truetype"),
+      url("http://cdn.beatsmusic.com/css/fonts/neuzeitgro-bla-webfont.svg#neuzeit_groteskblack")
+      format("svg");
+  font-weight:normal;
+  font-style:normal
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #212121;
+  font-size: 40px;
+  text-transform: uppercase;
+  font-family: "neuzeit_groteskblack", 'Helvetica Neue', sans-serif;
+  /* font-family: "Neuzeit Grotesk", 'Helvetica Neue', sans-serif; */
+  font-weight: lighter;
+  height: auto;
+}
+p {
+  color: #808080;
+  margin: 20px 0px;
+}
+
+span {
+  color: #fff;
+  padding: 14px 12px;
+}
+span.location { background-color: #e51937; }
+span.action   { background-color: #c51b4e; }
+span.with     { background-color: #a61c64; }
+span.artist   { background-color: #861e7b; }
+</style>
+</head>
+<body>
+<div class="content">
+  <p>I'm</p>
+  <div><span class="location"><%= params[:location] || "at SXSW" %></span></div>
+  <p>& Feel Like</p>
+  <div><span class="action"><%= params[:action] || "Partying" %></span></div>
+  <p>With</p>
+  <div><span class="with"><%= params[:with] || "The Buddha" %></span></div>
+  <p>To</p>
+  <div><span class="artist"><%= params[:artist] || "Trash Talk" %></span></div>
+</div>
+</body>
+</html>
+
