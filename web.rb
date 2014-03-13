@@ -5,9 +5,13 @@ require 'aws-sdk'
 require 'oauth'
 require 'twitter'
 require 'open-uri'
+require 'awesm'
 
 CONSUMER_KEY=ENV['TWITTER_CONSUMER_KEY']
 CONSUMER_SECRET=ENV['TWITTER_CONSUMER_SECRET']
+
+AWESM_KEY  = ENV['AWESM_KEY']
+AWESM_TOOL = ENV['AWESM_TOOL']
 
 if(ENV['RACK_ENV'] == "production")
   CALLBACK_URL="http://sentenceshare.beatsmusic.com/oauth/callback"
@@ -39,7 +43,12 @@ class Sentence < ActiveRecord::Base
   end
 
   def twitter_share_url
-    "http://api.awe.sm/url/share?channel=twitter&v=3&key=9bd1f65e737d8ec56d4684791b60cc6499f2e77d2820fe06c8b9c8181d95bdc2&tool=sbOpxg&url=http%3A%2F%2Fsentenceshare.beatsmusic.com/card/#{id}&destination=http%3A%2F%2Ftwitter.com%2Fshare%3Ftext%3DI+just+made+my+own+%2523BeatsSentence+for+%2523sxsw.+Make+yours+at%26url%3DAWESM_URL&campaign=sxsw-hackday"
+    Awesm::Url.create(
+      :channel => 'twitter',
+      :key => AWESM_KEY,
+      :tool => AWESM_TOOL,
+      :url => "http://sentenceshare.beatsmusic.com/card/#{id}"
+    ).awesm_url
   end
 
   def generate!
@@ -77,7 +86,7 @@ get '/card' do
                               artist: params[:artist]}).first_or_create!
   if @sentence.ready?
     session[:sentence_id] = @sentence.id
-    session[:status] = params[:status] || "I just made my own #BeatsSentence for #sxsw. Make yours at http://sentenceshare.beatsmusic.com"
+    session[:status] = params[:status] || "I just made my own #BeatsSentence for #sxsw #sxswmhc. Make yours at #{@sentence.twitter_share_url}"
     redirect '/oauth/request_token'
   else
     erb :"poll_card.html"
@@ -88,7 +97,6 @@ get '/card/:id' do
   @sentence = Sentence.find(params[:id])
   erb :"index.html"
 end
-
 
 ### Twitter stuff ###
 get '/oauth/request_token' do
