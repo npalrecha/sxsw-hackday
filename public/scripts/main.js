@@ -33,8 +33,7 @@ beats.addHandlers = function() {
 
 	$('div.tweet').click( function() {
 		var url = 'http://sentenceshare.beatsmusic.com/test.html/card?where=' + beats.getText('where') + '&what=' + beats.getText('feel') + '&who=' + beats.getText('with') + '&artist=' + beats.getText('who');
-		console.log( 'tweet, url:',url );
-		//window.location.replace( url );
+		window.location.replace( url );
 	});
 
 	beats.$author.click( beats.showMainScreen );
@@ -62,7 +61,6 @@ beats.addHandlers = function() {
 
 beats.getText = function ( section ) {
 	var data = beats[ '_' + section ];
-	var str;
 	var str = ( data.value === '' || data.value === data.orig ) ? data.orig.toUpperCase() : data.value.toUpperCase();
 	return encodeURIComponent( str );
 };
