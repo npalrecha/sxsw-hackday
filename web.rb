@@ -58,7 +58,7 @@ class Sentence < ActiveRecord::Base
     command = "#{File.join([Sinatra::Application.settings.root, "vendor/bin", wkhtmltoimage])} \
                --width 678 \
                --quality 100 \
-               'http://sentenceshare.beatsmusic.com/mockup?where=#{where}&what=#{what}&who=#{who}&artist=#{artist}' \
+               'http://sentenceshare.beatsmusic.com/mockup?where=#{URI::encode(where)}&what=#{URI::encode(what)}&who=#{URI::encode(who)}&artist=#{URI::encode(artist)}' \
                #{tmp.path}"
     system command
     bucket_name = "sentenceshare"
