@@ -46,11 +46,11 @@ span.artist   { background-color: #861e7b; }
 <body>
 <div class="content">
   <p>I'm</p>
-  <div><span class="location"><%= params[:location] || "at SXSW" %></span></div>
+  <div><span class="location"><%= params[:where] || "at SXSW" %></span></div>
   <p>& Feel Like</p>
-  <div><span class="action"><%= params[:action] || "Partying" %></span></div>
+  <div><span class="action"><%= params[:what] || "Partying" %></span></div>
   <p>With</p>
-  <div><span class="with"><%= params[:with] || "The Buddha" %></span></div>
+  <div><span class="with"><%= params[:who] || "The Buddha" %></span></div>
   <p>To</p>
   <div><span class="artist"><%= params[:artist] || "Trash Talk" %></span></div>
 </div>
