@@ -1,7 +1,6 @@
 require 'sinatra'
 require "sinatra/activerecord"
 require 'delayed_job_active_record'
-require 'awesm'
 require 'aws-sdk'
 
 AWS.config(
@@ -23,6 +22,10 @@ class Sentence < ActiveRecord::Base
 
   def url
     "http://sentenceshare.s3.amazonaws.com/sentences/#{id}.jpg"
+  end
+
+  def twitter_share_url
+    "http://api.awe.sm/url/share?channel=twitter&v=3&key=9bd1f65e737d8ec56d4684791b60cc6499f2e77d2820fe06c8b9c8181d95bdc2&tool=sbOpxg&url=http%3A%2F%2Fsentenceshare.beatsmusic.com/card/#{id}&destination=http%3A%2F%2Ftwitter.com%2Fshare%3Ftext%3DI+just+made+my+own+%2523BeatsSentence+for+%2523sxsw.+Make+yours+at%26url%3DAWESM_URL&campaign=sxsw-hackday"
   end
 
   def generate!
@@ -58,7 +61,7 @@ get '/card' do
                               who: params[:who],
                               artist: params[:artist]}).first_or_create!
   if @sentence.ready?
-    redirect "https://twitter.com/home?status=#{request.base_url}/card/#{@sentence.id}"
+    redirect @sentence.twitter_share_url
   else
     erb :"poll_card.html"
   end
