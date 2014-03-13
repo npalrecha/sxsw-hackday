@@ -34,6 +34,7 @@ class Sentence < ActiveRecord::Base
     wkhtmltoimage = (/darwin/ =~ RUBY_PLATFORM) != nil ? "wkhtmltoimage" : "wkhtmltoimage-amd64"
     command = "#{File.join([Sinatra::Application.settings.root, "vendor/bin", wkhtmltoimage])} \
                --width 500 \
+               --quality 100 \
                'http://sentenceshare.beatsmusic.com/mockup?where=#{where}&what=#{what}&who=#{who}&artist=#{artist}' \
                #{tmp.path}"
     system command
