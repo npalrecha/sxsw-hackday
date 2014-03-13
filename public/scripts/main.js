@@ -59,6 +59,12 @@ beats.addHandlers = function() {
 	});
 };
 
+beats.getText = function ( section ) {
+	var data = beats[ '_' + section ];
+	var str = ( data.value === '' || data.value === data.orig ) ? data.orig.toUpperCase() : data.value.toUpperCase();
+	return encodeURIComponent( str );
+};
+
 beats.transition = function( screen ) {
 	var delay = 50;
 	var flipTime = 500;
