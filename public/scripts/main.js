@@ -103,6 +103,29 @@ beats.startAuthorElemIntro = function( e ) {
 		$this.find('.bg').addClass('flip');
 		//console.log('this:',this);
 		//console.log('$option:',$option);
+		//return;
+
+		if ( $option.length > 0 ) {
+			console.log('$option.width():',$option.outerWidth() );
+			$this.find('.bg.wrapper').animate( { width:$option.outerWidth() }, 500);
+		}
+		else {
+			var $holder = $this.find('div.input-holder');
+			if ( $holder.length > 0 ) {
+				$this.find('.bg.wrapper').animate( { width:$holder.outerWidth() }, 500)
+			}
+		}
+	}
+};
+/*
+beats.startAuthorElemIntro = function( e ) {
+	//console.log('startAuthorElemIntro, this.tagName:',this.tagName);
+	if ( this.tagName.toLowerCase() === 'div' ) {
+		var $this = $(this);
+		var $option = $this.find('.option');
+		$this.find('.bg').addClass('flip');
+		//console.log('this:',this);
+		//console.log('$option:',$option);
 		return;
 
 		if ( $option.length > 0 ) {
@@ -112,6 +135,7 @@ beats.startAuthorElemIntro = function( e ) {
 		
 	}
 };
+*/
 
 beats.startMainElemIntro = function( e ) {
 	//console.log('startMainElemIntro, this.tagName:',this.tagName);
