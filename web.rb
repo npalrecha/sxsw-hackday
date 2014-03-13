@@ -5,13 +5,23 @@ require 'awesm'
 
 ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 
+set :root, File.dirname(__FILE__)
 set :public_folder, "#{File.dirname(__FILE__)}/public"
 
 class Sentence < ActiveRecord::Base
+
+  def generate!
+    # take screenshot and push up to s3
+    tmp = Tempfile.new('screenshot')
+    wkhtmltoimage = (/darwin/ =~ RUBY_PLATFORM) != nil ? "wkhtmltoimage" : "wkhtmltoimage-amd64"
+    system "#{File.join([settings.root, "vendor/bin", wkhtmltoimage])} #{url("/card")} #{tmp.path}"
+    tmp.close
+    tmp.unlink
+  end
 end
 
 get '/' do
-  "Front Page / backbone app to create sentence"
+  "Front Page / backbone app to create sentence #{settings.root}"
 end
 
 get '/card' do
