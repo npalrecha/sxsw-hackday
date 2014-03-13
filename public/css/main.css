@@ -1,0 +1,239 @@
+body {
+	background-color: #292929;
+	font-family: 'neuzeit_groteskblack', Helvetica, Arial, sans-serif;
+	font-size: 20px;
+	text-transform: uppercase;
+}
+div.author-screen span.static {
+	cursor: pointer;
+}
+div.logo {
+	padding:0;
+	margin-bottom: 10px;
+	text-align: center;
+	background-color: #131313;
+}
+div.tweet {
+	text-align: center;
+	color: #fff;
+	background-color: #5eaade;
+	padding: 10px 0;
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	cursor: pointer;
+}
+div.tweet i {
+	margin-right: 10px;
+}
+#beats_logo {
+	width:30px;
+}
+div.body-container {
+	margin-left: 10px;
+	margin-top: 5px;
+}
+div.main-screen {
+	margin-bottom: 75px;
+}
+div.author-screen {
+	margin-bottom: 20px;
+}
+div.author-screen div.input-holder {
+	display:inline-block;
+	background-color: #e51937;
+}
+div.arrow-holder {
+	height:10px;
+}
+.arrow-up {
+	width: 0;
+	height: 0;
+	border-bottom: 10px solid #292929;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	line-height: 10px;
+	position: relative;
+	top: -6px;
+}
+div.author-screen input {
+	outline: none;
+	border: none;
+	padding: 4px;
+	color:#FFF;
+	font-size: 20px;
+	line-height: 20px;
+	min-height: 18px;
+	text-transform: uppercase;
+	border-radius: 0px;
+	-webkit-border-radius: 0px;
+	background-color: transparent;
+}
+.cta {
+	color: #fff;
+	background-color: #131313;
+	padding: 10px 0;
+	text-align: center;
+	font-size: 20px;
+	letter-spacing: -1px;
+	line-height: 18px;
+}
+.cta > span {
+	text-transform: uppercase;
+}
+.hidden {
+	display:none;
+}
+span.static {
+	color: #808080;
+	display: block;
+	padding: 6px 5px;
+	font-size: 20px;
+}
+div.author-screen i {
+	color: #fff;
+	margin-left: 0px;
+	line-height: 25px;
+	font-size: 20px;
+	padding: 0 15px;
+}
+div.author-screen div#opt_1 {
+	background-color: #d31C48;
+}
+div.author-screen div#opt_2 {
+	background-color: #9e1254;
+}
+div.author-screen div#opt_3 {
+	background-color: #861e7b;
+}
+div.author-screen div#opt_4 {
+	background-color: #701466;
+}
+div.author-screen div#opt_5 {
+	background-color: #58094f;
+}
+div.author-screen span.break {
+	display:block;
+	margin: 12px 0;
+}
+/*
+div.action.flipped-up {
+	-webkit-transform: rotateX(-90deg);
+}
+*/
+
+/*
+-webkit-transition-duration:0.5s;
+-webkit-transition-timing-function:ease;
+-webkit-transition-delay:0.5s;
+transition-duration: 0.5s;
+transition-timing-function: ease;
+transition-delay: 0.5s;
+
+-webkit-transform-style: preserve-3d;
+-webkit-transform: rotateX(-90deg);
+
+-webkit-perspective:800px;
+-webkit-perspective-origin: left top;
+*/
+
+@-webkit-keyframes flip-down {
+  0% { -webkit-transform:rotateX(-90deg); width:95%; }
+  100% { -webkit-transform:rotate(0deg); width:95%; }
+}
+
+@-webkit-keyframes shrink-width {
+  0% { width: 90%; }
+  100% { width:250px; }
+}
+
+.hide {
+	visibility: hidden;
+}
+div.trans-wrapper {
+	-webkit-perspective-origin: top center;
+	-webkit-perspective:800px;
+}
+div.action, div.author-screen div.option {  	
+  	font-size: 20px;
+	line-height: 20px;
+	padding: 5px;
+	color: #fff;
+	cursor: pointer;
+	width: auto;
+	display: inline-block;
+	text-transform: uppercase;
+	min-height: 18px;
+	min-width: 18px;
+}
+
+div.action#where {
+	background-color: #e51937;
+	/*-webkit-animation:flip-down 0.5s ease-out 0s shrink-width 0.5s ease-in 0s;*/
+}
+
+div.action#feel {
+	background-color: #d31C48;
+	/*-webkit-animation:flip-down 0.5s ease-out 0.1s; /*, shrink-width 0.4s ease-in 0.1s;*/
+}
+
+div.action#with {
+	background-color: #9e1254;
+	/*-webkit-animation:flip-down 0.5s ease-out 0.2s; /*, shrink-width 0.4s ease-in 0.2s;*/
+}
+
+div.action#who {
+	background-color: #861e7b;
+	/*-webkit-animation:flip-down 0.5s ease-out 0.3s; /*, shrink-width 0.4s ease-in 0.3s;*/
+}
+
+@font-face {
+    font-family: 'neuzeit_groteskbold';
+    src: url('../fonts/neuzeitgro-bol-webfont.eot');
+    src: url('../fonts/neuzeitgro-bol-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/neuzeitgro-bol-webfont.woff') format('woff'),
+         url('../fonts/neuzeitgro-bol-webfont.ttf') format('truetype'),
+         url('../fonts/neuzeitgro-bol-webfont.svg#neuzeit_groteskbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'neuzeit_grotesklight';
+    src: url('../fonts/neuzeitgro-lig-webfont.eot');
+    src: url('../fonts/neuzeitgro-lig-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/neuzeitgro-lig-webfont.woff') format('woff'),
+         url('../fonts/neuzeitgro-lig-webfont.ttf') format('truetype'),
+         url('../fonts/neuzeitgro-lig-webfont.svg#neuzeit_grotesklight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'neuzeit_groteskregular';
+    src: url('../fonts/neuzeitgro-reg-webfont.eot');
+    src: url('../fonts/neuzeitgro-reg-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/neuzeitgro-reg-webfont.woff') format('woff'),
+         url('../fonts/neuzeitgro-reg-webfont.ttf') format('truetype'),
+         url('../fonts/neuzeitgro-reg-webfont.svg#neuzeit_groteskregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'neuzeit_groteskblack';
+    src: url('../fonts/neuzeitgro-bla-webfont.eot');
+    src: url('../fonts/neuzeitgro-bla-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/neuzeitgro-bla-webfont.woff') format('woff'),
+         url('../fonts/neuzeitgro-bla-webfont.ttf') format('truetype'),
+         url('../fonts/neuzeitgro-bla-webfont.svg#neuzeit_groteskblack') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'neuzeit_grotesk_condblack';
+    src: url('../fonts/neuzeitgrocon-bla-webfont.eot');
+    src: url('../fonts/neuzeitgrocon-bla-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/neuzeitgrocon-bla-webfont.woff') format('woff'),
+         url('../fonts/neuzeitgrocon-bla-webfont.ttf') format('truetype'),
+         url('../fonts/neuzeitgrocon-bla-webfont.svg#neuzeit_grotesk_condblack') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
