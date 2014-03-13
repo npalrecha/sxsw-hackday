@@ -86,7 +86,7 @@ get '/card' do
                               artist: params[:artist]}).first_or_create!
   if @sentence.ready?
     session[:sentence_id] = @sentence.id
-    session[:status] = params[:status] || "I just made my own #BeatsSentence for #sxsw #sxswmhc. Make yours at #{@sentence.twitter_share_url}"
+    session[:status] = params[:status] || "I just made my own #BeatsSentence for #sxsw #sxswmhc. Make yours at #{@sentence.twitter_share_url} Cc: @beatsmusic"
     redirect '/oauth/request_token'
   else
     erb :"poll_card.html"
