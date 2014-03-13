@@ -88,6 +88,7 @@ beats.transition = function( screen ) {
 			case 'div':
 				//$elem.attr('data-time', index * delay + flipTime);
 				//$elem.find('.bg.wrapper').css('width', 'auto');
+				$elem.find('.bg.wrapper').css('width', '90%');
 				$elem.hide().delay( index * delay ).show( {duration:0, start:beats.startAuthorElemIntro} );
 				break;
 			}			
