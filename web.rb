@@ -6,6 +6,7 @@ require 'oauth'
 require 'twitter'
 require 'open-uri'
 require 'awesm'
+require 'cgi'
 
 CONSUMER_KEY=ENV['TWITTER_CONSUMER_KEY']
 CONSUMER_SECRET=ENV['TWITTER_CONSUMER_SECRET']
@@ -58,7 +59,7 @@ class Sentence < ActiveRecord::Base
     command = "#{File.join([Sinatra::Application.settings.root, "vendor/bin", wkhtmltoimage])} \
                --width 678 \
                --quality 100 \
-               'http://sentenceshare.beatsmusic.com/mockup?where=#{URI::encode(where)}&what=#{URI::encode(what)}&who=#{URI::encode(who)}&artist=#{URI::encode(artist)}' \
+               'http://sentenceshare.beatsmusic.com/mockup?where=#{CGI::escape(where)}&what=#{CGI::escape(what)}&who=#{CGI::escape(who)}&artist=#{CGI::escape(artist)}' \
                #{tmp.path}"
     system command
     bucket_name = "sentenceshare"
