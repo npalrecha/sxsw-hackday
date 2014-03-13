@@ -100,7 +100,7 @@ end
 
 ### Twitter stuff ###
 get '/oauth/request_token' do
-  consumer = OAuth::Consumer.new CONSUMER_KEY, CONSUMER_SECRET, :site => 'https://api.twitter.com'
+  consumer = OAuth::Consumer.new CONSUMER_KEY, CONSUMER_SECRET, :site => 'https://api.twitter.com', :scheme => :header
 
   request_token = consumer.get_request_token :oauth_callback => CALLBACK_URL
   session[:request_token] = request_token.token
@@ -118,7 +118,7 @@ get '/oauth/callback' do
     @sentence = Sentence.find(session[:sentence_id])
     status = session[:status]
 
-    consumer = OAuth::Consumer.new CONSUMER_KEY, CONSUMER_SECRET, :site => 'https://api.twitter.com'
+    consumer = OAuth::Consumer.new CONSUMER_KEY, CONSUMER_SECRET, :site => 'https://api.twitter.com', :scheme => :header
 
     puts "CALLBACK: request: #{session[:request_token]}, #{session[:request_token_secret]}"
 
