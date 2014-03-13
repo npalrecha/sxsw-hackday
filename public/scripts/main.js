@@ -1,6 +1,6 @@
 var beats = beats || {};
 
-beats._where = { label:'i\'m', orig:'where are you?', options: [ 'At SXSW', 'On 6th St', 'The Convention Center', 'Bar 96', 'Stubbs', 'Karma Lounge' ], value: '' };
+beats._where = { label:'i\'m', orig:'where are you?', options: [ 'At SXSW', 'On 6th St', 'In The Convention Center', 'At Bar 96', 'At Stubbs', 'Karma Lounge' ], value: '' };
 beats._feel = { label:"& feel like", orig: 'doing what?', options: [ 'Getting Weird', 'Getting Lucky', 'Rocking Out', 'Dancing', 'Partying', 'Getting Jiggy Wit It' ], value: '' };
 beats._with = { label:'with', orig: 'with whom?', options: [ 'My Homies', 'My Pedicab Driver', 'Myself', 'Austin\'s Finest', 'Your Mom', 'Beautiful People' ], value: '' };
 beats._who = { label:'who', orig: 'which artist?', options: [ 'BANKS', 'DZ Deathrays', 'Kendrick Lamar', 'Phantogram', 'Talib Kweli', 'Zedd' ], value: '' };
