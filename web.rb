@@ -3,6 +3,8 @@ require "sinatra/activerecord"
 require 'delayed_job_active_record'
 require 'awesm'
 
+ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+
 set :public_folder, "#{File.dirname(__FILE__)}/public"
 
 class Sentence < ActiveRecord::Base
