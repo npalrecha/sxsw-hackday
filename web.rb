@@ -104,24 +104,28 @@ get '/oauth/request_token' do
 end
 
 get '/oauth/callback' do
-  @sentence = Sentence.find(session[:sentence_id])
-  status = session[:status]
+  if(params[:denied])
+    redirect "/"
+  else
+    @sentence = Sentence.find(session[:sentence_id])
+    status = session[:status]
 
-  consumer = OAuth::Consumer.new CONSUMER_KEY, CONSUMER_SECRET, :site => 'https://api.twitter.com'
+    consumer = OAuth::Consumer.new CONSUMER_KEY, CONSUMER_SECRET, :site => 'https://api.twitter.com'
 
-  puts "CALLBACK: request: #{session[:request_token]}, #{session[:request_token_secret]}"
+    puts "CALLBACK: request: #{session[:request_token]}, #{session[:request_token_secret]}"
 
-  request_token = OAuth::RequestToken.new consumer, session[:request_token], session[:request_token_secret]
-  access_token = request_token.get_access_token :oauth_verifier => params[:oauth_verifier]
+    request_token = OAuth::RequestToken.new consumer, session[:request_token], session[:request_token_secret]
+    access_token = request_token.get_access_token :oauth_verifier => params[:oauth_verifier]
 
-  client = Twitter::REST::Client.new do |config|
-    config.consumer_key        = CONSUMER_KEY
-    config.consumer_secret     = CONSUMER_SECRET
-    config.access_token        = access_token.token
-    config.access_token_secret = access_token.secret
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = CONSUMER_KEY
+      config.consumer_secret     = CONSUMER_SECRET
+      config.access_token        = access_token.token
+      config.access_token_secret = access_token.secret
+    end
+
+    update = client.update_with_media(status, open(@sentence.url))
+    redirect update.url
   end
-
-  update = client.update_with_media(status, open(@sentence.url))
-  redirect update.url
 end
 
