@@ -6,3 +6,4 @@ gem "pg"
 gem "rake"
 gem 'awesm'
 gem 'delayed_job_active_record'
+gem 'aws-sdk'

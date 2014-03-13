@@ -32,8 +32,8 @@ beats.addHandlers = function() {
 	});
 
 	$('div.tweet').click( function() {
-		var url = 'http://sentenceshare.beatsmusic.com/test.html/card?where=' + beats.getText('where') + '&what=' + beats.getText('feel') + '&who=' + beats.getText('with') + '&artist=' + beats.getText('who');
-		window.location.replace( url );
+		var url = '/card?where=' + beats.getText('where') + '&what=' + beats.getText('feel') + '&who=' + beats.getText('with') + '&artist=' + beats.getText('who');
+    window.location.href = url
 	});
 
 	beats.$author.click( beats.showMainScreen );

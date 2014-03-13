@@ -22,6 +22,10 @@ GEM
       hashie
       httpclient
       json
+    aws-sdk (1.36.1)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     builder (3.1.4)
     delayed_job (4.0.0)
       activesupport (>= 3.0, < 4.1)
@@ -32,8 +36,11 @@ GEM
     httpclient (2.3.4.1)
     i18n (0.6.9)
     json (1.8.1)
+    mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.9.0)
+    nokogiri (1.6.1)
+      mini_portile (~> 0.5.0)
     pg (0.17.1)
     rack (1.5.2)
     rack-protection (1.5.2)
@@ -50,12 +57,14 @@ GEM
       atomic (>= 1.1.7, < 2)
     tilt (1.4.1)
     tzinfo (0.3.39)
+    uuidtools (2.1.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   awesm
+  aws-sdk
   delayed_job_active_record
   pg
   rake
